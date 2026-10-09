@@ -10,6 +10,7 @@ function showAdvice(text, number) {
 
 async function generateAdvice() {
     try {
+        qrBtn.disabled = false;
         const response = await fetch(`https://api.adviceslip.com/advice`);
         if (response.ok) {
             const result = await response.json();
@@ -20,6 +21,8 @@ async function generateAdvice() {
         }
     } catch (error) {
         console.error(error);
+    } finally {
+        qrBtn.disabled = false;
     }
 }
 
